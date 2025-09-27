@@ -1,0 +1,20 @@
+<div class="producto-card">
+    <div class="producto-imagen">
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+        {% if producto.en_promocion %}
+        <span class="promocion-badge">Promoción</span>
+        {% endif %}
+    </div>
+    <div class="producto-info">
+        <h4>{{ producto.nombre }}</h4>
+        <p class="producto-descripcion">{{ producto.descripcion|truncatewords:15 }}</p>
+        <div class="producto-precios">
+            {% if producto.en_promocion %}
+            <span class="precio-original">${{ producto.precio }}</span>
+            <span class="precio-promocion">${{ producto.precio_promocion }}</span>
+            {% else %}
+            <span class="precio-normal">${{ producto.precio }}</span>
+            {% endif %}
+        </div>
+    </div>
+</div>

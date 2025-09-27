@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section Moderna -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Descubre Nuestra Colección</h1>
+        <p>Productos exclusivos con la mejor calidad y precios increíbles</p>
+        <div style="margin-top: 2rem;">
+            <a href="#productos" class="btn btn-primary">
+                <span>Ver Productos</span>
+                <span>↓</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Categorías Mejoradas -->
+<section class="categorias-section" id="categorias">
+    <h2>Explora por Categorías</h2>
+    <div class="categorias-container">
+        <button class="scroll-btn scroll-left">‹</button>
+        <div class="categorias-scroll">
+            {% for categoria in categorias %}
+            <div class="categoria-item" data-categoria="{{ categoria.id }}">
+                <span class="categoria-icon">📦</span>
+                {{ categoria.nombre }}
+            </div>
+            {% endfor %}
+        </div>
+        <button class="scroll-btn scroll-right">›</button>
+    </div>
+</section>
+
+<!-- Productos con Animación -->
+<section class="productos-section" id="productos">
+    {% for categoria, productos in productos_por_categoria.items %}
+    <div class="categoria-productos fade-in" id="categoria-{{ categoria.id }}">
+        <h3>{{ categoria.nombre }}</h3>
+        <div class="productos-grid">
+            {% for producto in productos %}
+            <div class="producto-card">
+                <div class="producto-imagen">
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" 
+                         loading="lazy" onerror="this.src='{% static 'images/placeholder.jpg' %}'">
+                    {% if producto.en_promocion %}
+                    <span class="promocion-badge">🔥 Promoción</span>
+                    {% endif %}
+                </div>
+                <div class="producto-info">
+                    <h4>{{ producto.nombre }}</h4>
+                    <p class="producto-descripcion">{{ producto.descripcion }}</p>
+                    <div class="producto-precios">
+                        {% if producto.en_promocion %}
+                        <span class="precio-original">${{ producto.precio }}</span>
+                        <span class="precio-promocion">${{ producto.precio_promocion }}</span>
+                        {% else %}
+                        <span class="precio-normal">${{ producto.precio }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="producto-actions">
+                        <button class="btn btn-primary">
+                            <span>💖</span>
+                            Me Interesa
+                        </button>
+                        <button class="btn btn-outline">
+                            <span>🔍</span>
+                            Detalles
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<!-- Ubicación Mejorada -->
+<section class="ubicacion-section" id="ubicacion">
+    <div class="ubicacion-content">
+        <h2>Visítanos</h2>
+        <p>Ven y conoce nuestra tienda física</p>
+        
+        <div class="mapa-container">
+            <h3 style="color: white; margin-bottom: 1rem;">📍 Nuestra Ubicación</h3>
+            <p style="opacity: 0.9; margin-bottom: 2rem;">
+                Av. Principal #123, Ciudad, Estado<br>
+                Horario: Lunes a Viernes 9:00 - 18:00
+            </p>
+            <a href="#" class="btn btn-primary" style="background: white; color: #667eea;">
+                <span>🗺️</span>
+                Cómo Llegar
+            </a>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div>📞</div>
+                <h4>Teléfono</h4>
+                <p>+1 (555) 123-4567</p>
+            </div>
+            <div class="info-card">
+                <div>✉️</div>
+                <h4>Email</h4>
+                <p>info@mitienda.com</p>
+            </div>
+            <div class="info-card">
+                <div>🕒</div>
+                <h4>Horario</h4>
+                <p>Lun-Vie: 9:00-18:00<br>Sáb: 10:00-14:00</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

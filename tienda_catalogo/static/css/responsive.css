@@ -1,0 +1,124 @@
+/* Responsive Design Mejorado */
+@media (max-width: 1200px) {
+    .header-content,
+    .categorias-container,
+    .productos-grid,
+    .ubicacion-content,
+    .footer-content {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .productos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .hero {
+        padding: 7rem 1.5rem 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0.75rem 1rem;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
+    }
+    
+    .categorias-section,
+    .productos-section,
+    .ubicacion-section {
+        padding: 2rem 1rem;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mapa-container {
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .logo::before {
+        font-size: 1.5rem;
+    }
+    
+    nav a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .categoria-item {
+        min-width: 110px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .producto-info {
+        padding: 1rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: var(--darker);
+        color: var(--light);
+    }
+    
+    .categorias-section,
+    .productos-section {
+        background: var(--dark);
+    }
+    
+    .producto-card,
+    .info-card {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--light);
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --primary: #0000ff;
+        --secondary: #ff0000;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

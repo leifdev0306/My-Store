@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tienda Elegante - Catálogo Premium{% endblock %}</title>
+    
+    <!-- CARGAR STATIC AL INICIO DEL TEMPLATE BASE -->
+    {% load static %}
+    
+    <!-- Preload crítico -->
+    <link rel="preload" as="style" href="{% static 'css/style.css' %}">
+    <link rel="preload" as="script" href="{% static 'js/main.js' %}">
+    
+    <!-- Fuentes modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Catálogo premium de productos exclusivos. Descubre las mejores ofertas y promociones.">
+    <meta name="keywords" content="tienda, productos, catálogo, ofertas, promociones">
+</head>
+<body>
+    {% include 'includes/header.html' %}
+    
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+    {% include 'includes/footer.html' %}
+    
+    <!-- Scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    <!-- Estilos inline críticos -->
+    <style>
+        .loading-placeholder {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .loaded .loading-placeholder {
+            opacity: 1;
+        }
+        
+        /* Estilos temporales para verificar que funciona */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</body>
+</html>
